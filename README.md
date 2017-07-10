@@ -1,5 +1,9 @@
 # React Midi Sequencer
 ## A piano roll style midi file player for composers that enables import, visualization, and playback of midi files.
+
+![Watch the Demo](/demo.gif)
+[Video Demo](https://youtu.be/W0LfRSNiCAo)
+
 ### Concept
 
 Inspired by programs like FruityLoops with a piano roll style composition interface, Scott and I set out to build our own from Scratch.  Scott had always been interested in music creation apps and my background in Music Theory made me an ideal partner for decoding the ancient world of midi technology.
@@ -18,5 +22,6 @@ For the virtual instrument sounds to play we had to convert soundfonts into Java
 
 Phase 1 we developed our own timer system and used state to compare note timings against the master clock.  This was extremely expensive requiring a rewrite. We eventually moved the project to redux, added various redux add-ons to benefit performance and then moved the timeline and playback features exclusively to Tone.js.
 
-We're working through some stability issues, multi-playback, and creating a custom drum sample library, as the generator tool cannot convert drum sounds to Javascript. Different versions are spread across branches, but the demo above is the latest version using redux.
+### What's next
 
+We're working through some stability issues, multi-playback, cleaning up latency/pops/clicks, and creating a custom drum sample library. Different versions are spread across branches, but the demo above is the latest version using redux.
