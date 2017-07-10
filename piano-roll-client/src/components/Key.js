@@ -1,12 +1,13 @@
 import React from 'react'
 import classSet from 'react-classset'
+import { connect } from 'react-redux'
 
-const wideKeys = ['D[0-9]', 'A[0-9]', 'G[0-9]']
+import { getInstrumentName } from '../selectors'
+import { wideKeys } from '../concerns/keyboard'
+import Player from '../api/ToneKeyboardHandler'
 
-const handleClick = (instrument, key) => {
-  instrument.then(function(clarinet) {
-    clarinet.play(key, instrument.currentTime, { duration: 0.5})
-  })
+const handleClick = (key) => {
+  Player.triggerKey(key, 0.5)
 }
 
 function Key(props) {
@@ -15,7 +16,7 @@ function Key(props) {
     'wide': wideKeys.find( key => props.name.search( key ) !== -1 )
   })
     return (
-      <li className={classes} onClick={ () => handleClick(props.instrument, props.name) }>
+      <li className={classes} onClick={ () => handleClick(props.name) }>
         <span className="tut">
           <div>
             <i>
@@ -26,4 +27,6 @@ function Key(props) {
       </li>)
 }
 
-export default Key
+const mapStateToProps = state => ({instrument: getInstrumentName(state)})
+
+export default connect(mapStateToProps)(Key)

@@ -1,4 +1,7 @@
 class NoteSerializer < ActiveModel::Serializer
-  attributes :id, :velocity, :pitch, :start_time, :duration
-  belongs_to :track
+  attributes :id, :name, :velocity, :pitch, :start_time, :duration
+
+  def velocity
+    object.velocity.round(3)
+  end
 end

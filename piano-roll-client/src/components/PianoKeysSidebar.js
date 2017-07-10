@@ -1,16 +1,24 @@
 import React from 'react'
+import _ from 'lodash'
+
 import Key from './Key'
+import { sevenOctavePiano } from '../concerns/keyboard'
 
 function PianoKeysSidebar(props) {
-    const pianoOctave = props.sevenOctavePiano.map((pianoKey, i) => <Key name={pianoKey} key={i} white={pianoKey.search('#') === -1} instrument={props.instrument} />)
-
-    return (
-        <nav id="nav-piano">
-            <ul>
-                {pianoOctave}
-            </ul>
-        </nav>
-    )
+  const pianoOctave = sevenOctavePiano.map((pianoKey, i) => (
+    <Key
+      key={_.uniqueId('key_')}
+      name={pianoKey}
+      white={pianoKey.search('#') === -1}
+    />
+  ))
+  return (
+    <div id="nav-piano">
+      <ul>
+        {pianoOctave}
+      </ul>
+    </div>
+  )
 }
 
 export default PianoKeysSidebar

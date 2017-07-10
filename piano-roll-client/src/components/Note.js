@@ -1,29 +1,28 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { connect } from 'react-redux'
 
-class Note extends Component {
+import makeGetNoteForPlayer from '../selectors/notesSelectors'
 
-  // shouldComponentUpdate(nextProps) {
-  //   return (nextProps.start_time - nextProps.currentTime) < 0.05 && (nextProps.start_time - nextProps.currentTime) > 0
-  // }
-
-  render() {
-    if ((this.props.start_time - this.props.currentTime) < 0.05 && (this.props.start_time - this.props.currentTime) > 0) {
-      this.props.instrument.then(instrument => {
-        instrument.play(this.props.pitch, this.props.instrument.currentTime, { duration: this.props.duration})
-      })
-    }
-    const noteStyle = {
-      left: `${Math.round(this.props.start_time * 200) + 4}px`,
-      width: `${Math.round(this.props.duration * 200)}px`
-    }
-    return (
-      <div className="note" style={noteStyle}>
-        <span>
-          {this.props.name}
-        </span>
-      </div>
-    )
+const Note = props => {
+  const noteStyle = {
+    left: `${Math.round(props.note.start_time * 200) + 4}px`,
+    width: `${Math.round(props.note.duration * 200)}px`
   }
+  return (
+    <div className="note" style={noteStyle}>
+      <span>
+        {props.name}
+      </span>
+    </div>
+  )
 }
 
-export default Note
+
+const makeMapStateToProps = () => {
+  const getNoteForPlayer = makeGetNoteForPlayer()
+  return (state, ownProps) => ({
+    note: getNoteForPlayer(state, ownProps)
+  })
+}
+
+export default connect(makeMapStateToProps)(Note)

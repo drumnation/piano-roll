@@ -112,6 +112,7 @@ body {
 }
 #time-bar button {
   top: 66%;
+  width: 2.45em;
 }
 #time-bar button:first-of-type {
   top: 33%;
@@ -158,7 +159,7 @@ Licence: Attribution
   background-color: #222;
   background-image: linear-gradient(60deg, #111, #333, #111, #3c3c3c, #333 70%);
   width: 25%;
-  padding: 0 15px 40px 0;
+  padding: 0 15px 80px 0;
   border-right: 1px solid #111;
   border-bottom: 1px solid #111;
   border-radius: 0 0 7px 0;
@@ -180,7 +181,12 @@ Licence: Attribution
   height: calc(2 * var(--note-slot-width) + 1px);
 }
 
-#nav-piano .wide:first-child, #nav-piano .wide:first-child .tut {
+#nav-piano li:first-child span,
+#nav-piano li:first-child span div {
+  height: var(--note-slot-width);
+}
+
+#nav-piano .wide:last-child, #nav-piano .wide:last-child .tut {
   height: calc( var(--note-slot-width)*3/2 + 1px);
 }
 

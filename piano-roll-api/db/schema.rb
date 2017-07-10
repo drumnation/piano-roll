@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170526172904) do
+ActiveRecord::Schema.define(version: 20170705221438) do
 
   create_table "instruments", force: :cascade do |t|
     t.string   "name"
@@ -36,8 +36,10 @@ ActiveRecord::Schema.define(version: 20170526172904) do
     t.string   "title"
     t.float    "duration"
     t.integer  "bpm"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "ppq"
+    t.         "time_signature"
   end
 
   create_table "tracks", force: :cascade do |t|

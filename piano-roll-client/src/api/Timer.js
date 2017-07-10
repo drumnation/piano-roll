@@ -1,11 +1,11 @@
 let timerId = 0
 class Timer {
-  constructor(duration, callback) {
+  constructor(options) {
     this.currentTime = 0
     this.paused = false
-    this.duration = duration
-    this.callback = callback
-    this.start = () => this.play(callback)
+    this.duration = options.duration
+    this.callback = options.callback
+    this.start = () => this.play(options.callback)
     this.id = timerId
     timerId += 1
   }
